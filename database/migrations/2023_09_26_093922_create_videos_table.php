@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('published_at');
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */
