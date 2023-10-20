@@ -7,7 +7,7 @@
 <secteur class="boiteLecteur">
     <div class="lecteurVideo">
         <video src="{{ asset('video\5 SECOND TIMER.mp4') }}" class="lecteurVideoContainer" controls></video>
-        <h2>exemple de titre</h2>
+        <h3>exemple de titre</h3>
         <div class="textCarteVideo">
             <p>pseudo de l auteur</p>
             <p>duree de video</p>

@@ -13,7 +13,7 @@
                 
                 <video src="{{ asset('video\5 SECOND TIMER.mp4') }}" class="videoContainer" muted></video>
             </button>
-            <h4>Exemple de titre</h4>
+            <h3>Exemple de titre</h3>
             <div class="textCarteVideo">
                 <p>Pyrobarbare</p>
                 <p>1h45</p>
@@ -28,7 +28,7 @@
                 
                 <video src="{{ asset('video\joke.mp4') }}" class="videoContainer" muted></video>
             </button>
-            <h4>Exemple de titre</h4>
+            <h3>Exemple de titre</h3>
             <div class="textCarteVideo">
                 <p>Pyrobarbare</p>
                 <p>1h45</p>
@@ -43,7 +43,7 @@
                 
                 <video src="{{ asset('video\onepiece live arciton.mp4') }}" class="videoContainer" muted></video>
             </button>
-            <h4>Exemple de titre</h4>
+            <h3>Exemple de titre</h3>
             <div class="textCarteVideo">
                 <p>Pyrobarbare</p>
                 <p>1h45</p>
@@ -58,7 +58,7 @@
                 
                 <video src="{{ asset('video\5 SECOND TIMER.mp4') }}" class="videoContainer" muted></video>
             </button>
-            <h4>Exemple de titre</h4>
+            <h3>Exemple de titre</h3>
             <div class="textCarteVideo">
                 <p>Pyrobarbare</p>
                 <p>1h45</p>
@@ -72,7 +72,7 @@
             <button class="videoBouton">
                 
                 <video src="{{ asset('video\joke.mp4') }}" class="videoContainer" muted></video>
-            <h4>Exemple de titre</h4>
+            <h3>Exemple de titre</h3>
             <div class="textCarteVideo">
                 <p>Pyrobarbare</p>
                 <p>1h45</p>
@@ -87,7 +87,7 @@
                 
                 <video src="{{ asset('video\onepiece live arciton.mp4') }}" class="videoContainer" muted></video>
             </button>
-            <h4>Exemple de titre</h4>
+            <h3>Exemple de titre</h3>
             <div class="textCarteVideo">
                 <p>Pyrobarbare</p>
                 <p>1h45</p>
@@ -101,7 +101,7 @@
             <button class="videoBouton">
                 <video src="{{ asset('video\5 SECOND TIMER.mp4') }}" class="videoContainer" muted></video>
             </button>
-            <h4>Exemple de titre</h4>
+            <h3>Exemple de titre</h3>
             <div class="textCarteVideo">
                 <p>Pyrobarbare</p>
                 <p>1h45</p>

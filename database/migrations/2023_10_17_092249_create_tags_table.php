@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Tag;
+use App\Models\Video;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,14 +13,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
-        });
-        Schema::table('videos', function (Blueprint $table){
-            $table->foreignIdFor(Category::class)->nullable()->constrained()->cascadeOnDelete();
-        
         });
     }
 
@@ -27,10 +25,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
-        Schema::table('videos', function (Blueprint $table){
-            $table->dropForeignIdFor(Category::class);
-        
-        });
+        Schema::dropIfExists('video_tag');
+        Schema::dropIfExists('tags');
     }
 };

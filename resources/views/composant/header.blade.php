@@ -3,14 +3,21 @@
         <div class="lienNav">
             <a href="index.php"><img class="logo"
                     src="{{ asset('image/tv-media-logo-design.-video-cam-sign.-png_109082.jpg') }}" alt=""></a>
-            <p><a href="recherche.php"
-                    class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover policeLienNav">Recherche</a>
+            <p><a href="recherche.php" class="lienNavStyle">Recherche</a>
             </p>
-            <p><a href="recherche.php"
-                class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover policeLienNav">Chaines</a>
-        </p>
+            <p><a href="recherche.php" class="lienNavStyle">Chaines</a>
+            </p>
         </div>
+
         <div class="connexionNav">
+            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
+                data-bs-target="#inscription">Inscription</button>
+
+            <button type="button" class="btn btn-primary btn-lg ms-2" data-bs-toggle="modal"
+                data-bs-target="#connexion">Connexion</button>
+        </div>
+
+        {{-- <div class="connexionNav">
             <div class="btn-group">
                 <form action="espacePerso.php" method="POST">
                     <button class="btn btn-secondary btn-lg" type="submit">
@@ -29,7 +36,7 @@
                         data-bs-target="#modalUploadVideo">Uploader une video</button>
                 </ul>
             </div>
-        </div>
+        </div> --}}
 
 
         <?php
@@ -137,8 +144,7 @@
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="connexionLabel">Si vous ne possedez pas de compte, veuillez
                         </h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
                     <div class="modal-body">
