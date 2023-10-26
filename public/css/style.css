@@ -157,6 +157,12 @@ footer {
     padding: 15px;
 }
 
+.rechercherVideoBoite{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    padding-top: 1rem;
+}
+
 .listeRecherche {
     display: grid;
     grid-template-columns: auto auto auto auto;
@@ -219,6 +225,10 @@ footer {
     .boite {
         grid-template-columns: 33% 33% 33%;
     }
+
+    .rechercherVideoBoite{
+        grid-template-columns: 33% 33% 33%;
+    }
 }
 
 
@@ -230,7 +240,11 @@ footer {
     .boite {
         grid-template-columns: 50% 50%;
     }
-
+    
+    .rechercherVideoBoite{
+        grid-template-columns: 50% 50%;
+    }
+    
     .lecteurCategorie{
         
         grid-template-columns: auto;
@@ -269,6 +283,10 @@ footer {
     /* Partie accueil*/
 
     .boite {
+        grid-template-columns: 100%;
+    }
+
+    .rechercherVideoBoite{
         grid-template-columns: 100%;
     }
 

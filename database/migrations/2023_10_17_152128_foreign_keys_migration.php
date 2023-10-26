@@ -19,46 +19,46 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('videos', function (Blueprint $table) {
-            $table->foreignIdFor(User::class)->contrained()->cascadeOnDelete();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
         });
         
         Schema::table('comments', function (Blueprint $table) {
-            $table->foreignIdFor(User::class)->contrained()->cascadeOnDelete();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
         });
         
         Schema::table('channels', function (Blueprint $table) {
-            $table->foreignIdFor(User::class)->contrained()->cascadeOnDelete();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
         });
         
         Schema::table('items', function (Blueprint $table) {
-            $table->foreignIdFor(User::class)->contrained()->cascadeOnDelete();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
         });
         
         Schema::table('baskets', function (Blueprint $table) {
-            $table->foreignIdFor(User::class)->contrained()->cascadeOnDelete();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
         });
 
         Schema::table('comments', function (Blueprint $table) {
-            $table->foreignIdFor(Video::class)->contrained()->cascadeOnDelete();
+            $table->foreignIdFor(Video::class)->constrained()->cascadeOnDelete();
         });
 
         Schema::table('videos', function (Blueprint $table) {
-            $table->foreignIdFor(Category::class)->contrained()->cascadeOnDelete();
+            $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();
         });
 
         Schema::create('video_tag', function (Blueprint $table) {
-            $table->foreignIdFor(Video::class)->contrained()->cascadeOnDelete();
-            $table->foreignIdFor(Tag::class)->contrained()->cascadeOnDelete();
+            $table->foreignIdFor(Video::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Tag::class)->constrained()->cascadeOnDelete();
             $table->primary('video_id','tag_id');
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignIdFor(Role::class)->contrained()->cascadeOnDelete();
+            $table->foreignIdFor(Role::class)->constrained()->cascadeOnDelete();
         });
 
         Schema::create('basket_item', function (Blueprint $table) {
-            $table->foreignIdFor(Basket::class)->contrained()->cascadeOnDelete();
-            $table->foreignIdFor(Item::class)->contrained()->cascadeOnDelete();
+            $table->foreignIdFor(Basket::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Item::class)->constrained()->cascadeOnDelete();
             $table->primary('basket_id','item_id');
         });
         

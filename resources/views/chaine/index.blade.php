@@ -37,7 +37,7 @@
 
             <div class="tab-pane fade" id="video-tab-pane" role="tabpanel" aria-labelledby="video-tab" tabindex="0">
 
-                <div class="boite">
+                <div class="rechercherVideoBoite">
 
                     <form action="lecteur.php" method="POST">
                         <div class="carteVideo">

@@ -21,7 +21,7 @@ $(document).ready(function() {
         this.pause();
     });
     
-    console.log(video);
+    console.log('bonjour');
    
     ///////////////////////////////////////////////////////////////////////////////////////:
     
