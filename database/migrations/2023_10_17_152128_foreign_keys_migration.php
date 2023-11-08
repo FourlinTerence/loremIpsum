@@ -51,11 +51,11 @@ return new class extends Migration
             $table->foreignIdFor(Tag::class)->constrained()->cascadeOnDelete();
             $table->primary('video_id','tag_id');
         });
-
+        
         Schema::table('users', function (Blueprint $table) {
             $table->foreignIdFor(Role::class)->constrained()->cascadeOnDelete();
         });
-
+        
         Schema::create('basket_item', function (Blueprint $table) {
             $table->foreignIdFor(Basket::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Item::class)->constrained()->cascadeOnDelete();

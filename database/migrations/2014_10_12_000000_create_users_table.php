@@ -33,7 +33,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+       
 
         Schema::table('videos', function (Blueprint $table) {
             $table->dropForeignIdFor(User::class)->contrained()->cascadeOnDelete();
@@ -54,5 +54,19 @@ return new class extends Migration
         Schema::table('baskets', function (Blueprint $table) {
             $table->dropForeignIdFor(User::class);
         });
+
+        Schema::table('videos', function (Blueprint $table) {
+            $table->dropForeignIdFor(User::class);
+        });
+
+        Schema::table('comments', function (Blueprint $table) {
+            $table->dropForeignIdFor(Video::class);
+        });
+
+        Schema::table('videos', function (Blueprint $table) {
+            $table->dropForeignIdFor(Category::class);
+        });
+
+        Schema::dropIfExists('users');
     }
 };

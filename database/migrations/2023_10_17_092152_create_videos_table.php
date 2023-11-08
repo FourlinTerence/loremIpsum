@@ -30,8 +30,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('videos');
 
-        Schema::table('comments', function (Blueprint $table) {
-            $table->dropForeignIdFor(Video::class);
-        });
+    
     }
 };

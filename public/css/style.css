@@ -177,6 +177,22 @@ footer {
     font-size: 1.5rem;
 }
 
+.postVideo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.labelImput {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.inputSize {
+    width: 80%;
+}
+
 
 /* Partie lecteur*/
 

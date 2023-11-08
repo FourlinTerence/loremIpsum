@@ -9,76 +9,38 @@
             </p>
         </div>
 
-        <div class="connexionNav">
-            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
-                data-bs-target="#inscription">Inscription</button>
+        @switch(Auth::check())
+            @case(true)
+                <div class="connexionNav">
+                    <div class="btn-group">
 
-            <button type="button" class="btn btn-primary btn-lg ms-2" data-bs-toggle="modal"
-                data-bs-target="#connexion">Connexion</button>
-        </div>
+                        <a class="btn btn-secondary btn-lg" type="submit">
+                            Espace personnel
+                        </a>
 
-        {{-- <div class="connexionNav">
-            <div class="btn-group">
-                <form action="espacePerso.php" method="POST">
-                    <button class="btn btn-secondary btn-lg" type="submit">
-                        Espace personnel
-                    </button>
-                    <input type="hidden" name="ID_Utilisateur" id="" value="NomUtilisateur">
-                </form>
-                <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="visually-hidden">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu">
-                    <p>Bob Lennon</p>
-                    <a href="module\sessionUnset.php">Déconnexion</a>
-                    <button class="boutonRecherche" type="btn" data-bs-toggle="modal"
-                        data-bs-target="#modalUploadVideo">Uploader une video</button>
-                </ul>
-            </div>
-        </div> --}}
+                        <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <p>{{ $user->name }}</p>
+                            <a href="module\sessionUnset.php">Déconnexion</a>
+                            <button class="boutonRecherche postVideo" type="btn" data-bs-toggle="modal"
+                                data-bs-target="#modalUploadVideo">Soumettre une video</button>
+                        </ul>
+                    </div>
+                </div>
+            @break
 
+            @default
+                <div class="connexionNav">
+                    <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
+                        data-bs-target="#inscription">Inscription</button>
 
-        <?php
-        // switch (true) {
-        //     case empty($_SESSION["ID_Utilisateur"]):
-        
-        //         echo '
-        // <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
-        //     data-bs-target="#inscription">Inscription</button>
-        
-        // <button type="button" class="btn btn-primary btn-lg ms-2" data-bs-toggle="modal"
-        //     data-bs-target="#connexion">Connexion</button>
-        
-        //         ';
-        //         break;
-        
-        //     case (!empty($_SESSION["ID_Utilisateur"])):
-        //         echo '
-        //         <div class="btn-group">
-        //         <form action="espacePerso.php" method="POST">
-        //             <button class="btn btn-secondary btn-lg" type="submit">
-        //                 Espace personnel
-        //             </button>
-        //             <input type="hidden" name="ID_Utilisateur" id="" value="$_SESSION["ID_Utilisateur"]">
-        //         </form>
-        //         <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-        //             <span class="visually-hidden">Toggle Dropdown</span>
-        //         </button>
-        //         <ul class="dropdown-menu">
-        //             <p>' . $_SESSION["nomUser"] . ' ' . $_SESSION["prenomUser"] . '</p>
-        //             <a href="module\sessionUnset.php">Déconnexion</a>
-        //             <button class="boutonRecherche" type="btn" data-bs-toggle="modal" data-bs-target="#modalUploadVideo">Uploader une video</button>
-        //         </ul>
-        //     </div>
-        //         </div>';
-        //         break;
-        // }
-        ?>
-
-
-
-
+                    <button type="button" class="btn btn-primary btn-lg ms-2" data-bs-toggle="modal"
+                        data-bs-target="#connexion">Connexion</button>
+                </div>
+        @endswitch
         </div>
     </nav>
 
@@ -94,10 +56,11 @@
                     </div>
 
                     <div class="modal-body">
-                        <label for="inscriptionNom" class="form-label">Nom</label>
-                        <input type="text" id="inscriptionNom" class="form-control" placeholder="Inscrivez votre nom"
-                            name="nom">
-
+                        <div class="labelImput">
+                            <label for="inscriptionNom" class="form-label">Nom</label>
+                            <input type="text" id="inscriptionNom" class="form-control"
+                                placeholder="Inscrivez votre nom" name="nom">
+                        </div>
                         <label for="inscriptionPrenom" class="form-label">Prenom</label>
                         <input type="text" id="inscriptionPrenom" class="form-control"
                             placeholder="Inscrivez votre prenom" name="prenom">
@@ -144,7 +107,8 @@
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="connexionLabel">Si vous ne possedez pas de compte, veuillez
                         </h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
 
                     <div class="modal-body">
@@ -171,17 +135,53 @@
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
+
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalUploadVideoLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="modalUploadVideoLabel">Ajouter une vidéo</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                <form method="POST" action="">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="labelImput">
+                            <label for="linkVideo" class="form-label ">Lien</label>
+                            <input class="form-control inputSize" type="file" id="linkVideo">
+                        </div>
+                        <div class="labelImput">
+                            <label for="titreVideo" class="form-label">Titre</label>
+                            <input type="text" id="titreVideo" class="form-control inputSize"
+                                placeholder="Inscrivez le titre de la vidéo" name="title"
+                                value="{{ old('title') }}">
+                        </div>
+                        <div class="labelImput">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea type="number" id="description" class="form-control inputSize" placeholder="Decrivez la vidéo"
+                                name="description">{{ old('description') }}
+                        </textarea>
+                        </div>
+                        <div class="labelImput">
+                            <label for="duree" class="form-label">durée</label>
+                            <input type="time" step="1" id="duree" class="form-control inputSize"
+                                placeholder="Inscrivez le titre de la vidéo" name="duration"
+                                value="{{ old('duration') }}">
+                        </div>
+                        <div class="labelImput">
+                            <label for="categorie" class="form-label">Catégorie</label>
+                            <select id="categorie" class="form-control inputSize" name="categorie">
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-success">Enregistrer</button>
+                    </div>
+                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                </form>
             </div>
         </div>
     </div>
