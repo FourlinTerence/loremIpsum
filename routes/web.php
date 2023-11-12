@@ -32,10 +32,7 @@ Route::prefix('/')->name('index')->controller(VideoController::class)->group(fun
 Route::get('/lecteur', [AuthController::class, 'login'])->name('auth.login');
 
 Route::get('/recherchertemporaire' , function(){
-//     $category = new Role();
-//  $category->name = 'Abonné';
-//  $category->save();
-//  return 'test';
+    return view('rechercher.index');
 });
 
 Route::get('/chainetemporaire' , function(){
@@ -49,25 +46,12 @@ Route::get('/chainetemporaire' , function(){
 
 Route::get('/insertion' , function(){
     
-    // User::create([
-    //     'name'=>'Lennon',
-    //     'surname'=>'Bob',
-    //     'age'=>34,
-    //     'sexe'=>'masculin',
-    //     'pseudo'=>'Pyrobarbare',
-    //     'adress'=>'18 avenue pyrobarbare
-    //     batiment 3 appt 8
-    //     97400 St Denis',
-    //     'email'=>'lennonbob@test.com',
-    //     'password'=>Hash::make('Pyrobarbare1'),
-    //     'role_id'=>3,
-    // ]);
 
 });
 
-//  $category = new Role();
-//  $category->name = 'Administrateur';
-//  $category->save();
+// $category = new Role();
+// $category->name = 'Administrateur';
+// $category->save();
 
 
 //  User::create([
