@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
+            $table->string('pseudo')->unique();
             $table->integer('age');
             $table->string('sexe');
             $table->text('adress');
@@ -24,8 +25,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-        });
-    
+        });   
     }
     
     /**

@@ -6,109 +6,23 @@
 
 <h1 >NOS VIDEOS</h1>
 <section class="boite">
-
-    <form action="lecteur.php" method="POST">
+    @foreach ($videos as $video)
+    <form action="lecteur.php" method="get">
         <div class="carteVideo">
             <button class="videoBouton">
-                
-                <video src="{{ asset('video\5 SECOND TIMER.mp4') }}" class="videoContainer" muted></video>
+                <video src="{{ asset('video/' . $video->video_url) }}" class="videoContainer" muted>
+                </video>
             </button>
-            <h3>Exemple de titre</h3>
+            <h3>{{ $video->title }}</h3>
             <div class="textCarteVideo">
-                <p>Pyrobarbare</p>
-                <p>1h45</p>
+                <p>{{ $video->user->surname }}</p>
+                <p>{{ $video->duration }}</p>
             </div>
         </div>
-        <input type="hidden" name="ID_Video" value="'.$uneLigne['ID_Video'].'">
+        <input type="hidden" name="ID_Video" value="{{ $video->id }}">
     </form>
-
-    <form action="lecteur.php" method="POST">
-        <div class="carteVideo">
-            <button class="videoBouton">
-                
-                <video src="{{ asset('video\joke.mp4') }}" class="videoContainer" muted></video>
-            </button>
-            <h3>Exemple de titre</h3>
-            <div class="textCarteVideo">
-                <p>Pyrobarbare</p>
-                <p>1h45</p>
-            </div>
-        </div>
-        <input type="hidden" name="ID_Video" value="'.$uneLigne['ID_Video'].'">
-    </form>
+    @endforeach
     
-    <form action="lecteur.php" method="POST">
-        <div class="carteVideo">
-            <button class="videoBouton">
-                
-                <video src="{{ asset('video\onepiece live arciton.mp4') }}" class="videoContainer" muted></video>
-            </button>
-            <h3>Exemple de titre</h3>
-            <div class="textCarteVideo">
-                <p>Pyrobarbare</p>
-                <p>1h45</p>
-            </div>
-        </div>
-        <input type="hidden" name="ID_Video" value="'.$uneLigne['ID_Video'].'">
-    </form>
-
-    <form action="lecteur.php" method="POST">
-        <div class="carteVideo">
-            <button class="videoBouton">
-                
-                <video src="{{ asset('video\5 SECOND TIMER.mp4') }}" class="videoContainer" muted></video>
-            </button>
-            <h3>Exemple de titre</h3>
-            <div class="textCarteVideo">
-                <p>Pyrobarbare</p>
-                <p>1h45</p>
-            </div>
-        </div>
-        <input type="hidden" name="ID_Video" value="'.$uneLigne['ID_Video'].'">
-    </form>
-
-    <form action="lecteur.php" method="POST">
-        <div class="carteVideo">
-            <button class="videoBouton">
-                
-                <video src="{{ asset('video\joke.mp4') }}" class="videoContainer" muted></video>
-            <h3>Exemple de titre</h3>
-            <div class="textCarteVideo">
-                <p>Pyrobarbare</p>
-                <p>1h45</p>
-            </div>
-        </div>
-        <input type="hidden" name="ID_Video" value="'.$uneLigne['ID_Video'].'">
-    </form>
-
-    <form action="lecteur.php" method="POST">
-        <div class="carteVideo">
-            <button class="videoBouton">
-                
-                <video src="{{ asset('video\onepiece live arciton.mp4') }}" class="videoContainer" muted></video>
-            </button>
-            <h3>Exemple de titre</h3>
-            <div class="textCarteVideo">
-                <p>Pyrobarbare</p>
-                <p>1h45</p>
-            </div>
-        </div>
-        <input type="hidden" name="ID_Video" value="'.$uneLigne['ID_Video'].'">
-    </form>
-
-    <form action="lecteur.php" method="POST">
-        <div class="carteVideo">
-            <button class="videoBouton">
-                <video src="{{ asset('video\5 SECOND TIMER.mp4') }}" class="videoContainer" muted></video>
-            </button>
-            <h3>Exemple de titre</h3>
-            <div class="textCarteVideo">
-                <p>Pyrobarbare</p>
-                <p>1h45</p>
-            </div>
-        </div>
-        <input type="hidden" name="ID_Video" value="'.$uneLigne['ID_Video'].'">
-    </form>
 </section>
 
 @endsection

@@ -19,8 +19,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
         'email',
+        'pseudo',
         'password',
+        'age',
+        'sexe',
+        'adress',
+        'role_id',
     ];
 
     /**
@@ -42,4 +48,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function videos(){
+        return $this->hasMany(Video::class);
+    }
 }

@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\VideoController;
 use App\Models\Category;
+use App\Models\Role;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 
@@ -14,35 +18,68 @@ Route::get('/essaiDeDebug' , function(){
     return view('lecteur.index');
 });
 
+Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+Route::post('/login', [AuthController::class, 'dologin']);
+Route::post('/suscrib', [AuthController::class, 'suscrib'])->name('auth.suscrib');
+
 Route::prefix('/')->name('index')->controller(VideoController::class)->group(function(){
      Route::get('/', 'index')->name('index');
-     Route::post('/','store');
-    
-    // Route::get('/new','create')->name('create');    
-    // Route::post('/new','store'); 
-     
-    // Route::get('/{post}/edit','edit')->name('edit');
-    // Route::post('/{post}/edit','update');
-    
-    // Route::get('/{slug}-{post}', 'show')
-    // ->where([
-    //     'id' => '[0-9]+',
-    //     'slug' => '[a-z0-9\-]+'
-    
-    // ])->name('show');
+     Route::post('/','store')->middleware('auth');
+        
 });
 
+Route::get('/lecteur', [AuthController::class, 'login'])->name('auth.login');
+
 Route::get('/recherchertemporaire' , function(){
-    return view('rechercher.index');
+//     $category = new Role();
+//  $category->name = 'Abonné';
+//  $category->save();
+//  return 'test';
 });
 
 Route::get('/chainetemporaire' , function(){
-    return view('chaine.index');
+
+
+    $categories = Category::all();
+    return view('chaine.index', [
+        'categories' => $categories    
+]);
 });
 
 Route::get('/insertion' , function(){
-    $category = new Category();
-    $category->name = 'Cuisine';
-    $category->save();
+    
+    // User::create([
+    //     'name'=>'Lennon',
+    //     'surname'=>'Bob',
+    //     'age'=>34,
+    //     'sexe'=>'masculin',
+    //     'pseudo'=>'Pyrobarbare',
+    //     'adress'=>'18 avenue pyrobarbare
+    //     batiment 3 appt 8
+    //     97400 St Denis',
+    //     'email'=>'lennonbob@test.com',
+    //     'password'=>Hash::make('Pyrobarbare1'),
+    //     'role_id'=>3,
+    // ]);
 
 });
+
+//  $category = new Role();
+//  $category->name = 'Administrateur';
+//  $category->save();
+
+
+//  User::create([
+//      'name'=>'Lennon',
+//      'surname'=>'Bob',
+//      'age'=>34,
+//      'sexe'=>'masculin',
+//      'pseudo'=>'Pyrobarbare',
+//      'adress'=>'18 avenue pyrobarbare
+//      batiment 3 appt 8
+//      97400 St Denis',
+//      'email'=>'lennonbob@test.com',
+//      'password'=>Hash::make('bobLennon1'),
+//      'role_id'=>3,
+//  ]);

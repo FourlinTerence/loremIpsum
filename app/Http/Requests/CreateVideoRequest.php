@@ -29,7 +29,8 @@ class CreateVideoRequest extends FormRequest
             'slug' => ['required', 'min:4', 'regex:/^[a-z0-9\-]+$/', Rule::unique('videos')->ignore($this->video)],
             'description' => ['required'],
             'duration' => ['required'],
-            'category_id' => ['required', 'exists:categories,id']
+            'category_id' => ['required', 'exists:categories,id'],
+            'user_id' => ['required', 'exists:categories,id']
         ];
     }
     

@@ -11,17 +11,17 @@ use Illuminate\Http\Request;
 
 class VideoController extends Controller
 {
-    public function index (): View { 
+    public function index ($request): View { 
         
         $categories = Category::all();
-        $videos = Video::all();
+        $videos = Video::find($request->id());
         
         return view('accueil.index', [
             'categories' => $categories,
             'videos' => $videos   
     ]);
     }
-
+    
     public function store(CreateVideoRequest $request) {
         
         $data = $request->validated(); 

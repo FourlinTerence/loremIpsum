@@ -183,10 +183,13 @@ footer {
     font-weight: bold;
 }
 
+.allInput{
+    margin-bottom: 2rem;
+}
+
 .labelImput {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1rem;
 }
 
 .inputSize {
@@ -236,6 +239,20 @@ footer {
     grid-template-columns: auto auto;
 
 }
+.login {
+    min-height: 30rem;
+    width: 60%;
+    background: rgba(240, 239, 239, 0.779);
+    margin: 2rem auto;
+    border: 2px solid rgb(0, 179, 255);
+    border-radius: 20px;
+    box-shadow: 0 0 10px 5px #1ecee5;
+    padding: 3rem 5%;
+}
+
+/* PARTIE LOGIN */
+
+
 
 @media screen and (min-width: 1025px) and (max-width: 1270px){
     .boite {
@@ -251,6 +268,10 @@ footer {
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     .listeRecherche {
         grid-template-columns: 33% 33% 33%;
+    }
+
+    .lienNavStyle {
+        display: none;
     }
 
     .boite {
@@ -285,6 +306,10 @@ footer {
         padding: 1rem 2%;
     }
 
+    .lienNavStyle {
+        display: none;
+    }
+    
     .connexionNav {
         flex-direction: column-reverse;
         justify-content: space-evenly;
