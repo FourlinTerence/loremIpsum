@@ -32,7 +32,7 @@ class AuthController extends Controller
        
        if (Auth::attempt($credentials)){
         $request->session()->regenerate();
-        return redirect()->intended(route('index'));
+        return redirect()->route('index');
        
        }
        

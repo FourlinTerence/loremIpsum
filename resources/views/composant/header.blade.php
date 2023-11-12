@@ -222,9 +222,7 @@
                             <div class="labelImput">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea type="number" id="description" class="form-control inputSize" placeholder="Decrivez la vidéo"
-                                    name="description">
-                                        {{ old('description') }}
-                                </textarea>
+                                    name="description">{{old('description')}}</textarea>
                             </div>
                             @error('description')
                                 {{ $message }}

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LecteurController;
 use App\Http\Controllers\VideoController;
 use App\Models\Category;
 use App\Models\Role;
@@ -14,7 +15,7 @@ Route::get('/', function () {
     echo 'test';
 });
 
-Route::get('/essaiDeDebug' , function(){
+Route::get('/essaiDeDebug', function () {
     return view('lecteur.index');
 });
 
@@ -23,30 +24,30 @@ Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout')
 Route::post('/login', [AuthController::class, 'dologin']);
 Route::post('/suscrib', [AuthController::class, 'suscrib'])->name('auth.suscrib');
 
-Route::prefix('/')->name('index')->controller(VideoController::class)->group(function(){
-     Route::get('/', 'index')->name('index');
-     Route::post('/','store')->middleware('auth');
-        
+Route::prefix('/')->name('index')->controller(VideoController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::post('/', 'store')->middleware('auth');
 });
 
-Route::get('/lecteur', [AuthController::class, 'login'])->name('auth.login');
+Route::get('/lecteur/{slug}', [LecteurController::class, 'index'])->where([
+    'slug' => '[a-z0-9\-]+'
+])->name('lecteur');
 
-Route::get('/recherchertemporaire' , function(){
+Route::get('/recherchertemporaire', function () {
     return view('rechercher.index');
 });
 
-Route::get('/chainetemporaire' , function(){
+Route::get('/chainetemporaire', function () {
 
 
     $categories = Category::all();
     return view('chaine.index', [
-        'categories' => $categories    
-]);
+        'categories' => $categories
+    ]);
 });
 
-Route::get('/insertion' , function(){
+Route::get('/insertion', function () {
     
-
 });
 
 // $category = new Role();

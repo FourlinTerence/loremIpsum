@@ -7,20 +7,31 @@ use App\Models\Category;
 use App\Models\User;
 use App\Models\Video;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class VideoController extends Controller
+class LecteurController extends Controller
 {
-    public function index ($request): View { 
-        
+    
+    
+    public function index(string $slug):RedirectResponse | View
+    {    
+        $video = Video::where('slug', $slug)->firstOrFail();
         $categories = Category::all();
-        $videos = Video::find($request->id());
+    
+        if($video->slug !== $slug){
+            return to_route('lecteur',['slug' => $video->slug, 'id' => $video->id]);
+        }
+    
+        return view('lecteur.index', [
+            'video' => $video,
+            'categories' => $categories
+        ]);
+
+
         
-        return view('accueil.index', [
-            'categories' => $categories,
-            'videos' => $videos   
-    ]);
     }
+    
     
     public function store(CreateVideoRequest $request) {
         
@@ -42,12 +53,4 @@ class VideoController extends Controller
             ->route('index')
             ->with('success', "La vidéo a bien été sauvegardée");
     }
-    // public function store(CreateVideoRequest $request){
-    //     $video = Video::create($request->validated());
-    //     return redirect()
-    //     ->route('index')
-    //     ->with('success', "L'article a bien été sauvegarder");
-    //  }
 }
-
-// ->route('blog.show',['slug' => $post->slug, 'post' => $post->id])
