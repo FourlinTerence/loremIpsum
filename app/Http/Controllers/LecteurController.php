@@ -53,4 +53,19 @@ class LecteurController extends Controller
             ->route('index')
             ->with('success', "La vidéo a bien été sauvegardée");
     }
+
+    
+    public function updatea(Video $video, CreateVideoRequest $request){
+        
+        dd('toto');
+        $data = $request->validated();
+        dd($data);
+        
+        $video->update($data);
+        
+        return redirect()
+        ->route('lecteur',['slug' => $video->slug])
+        ->with('success', "La vidéo a bien été modifié");
+    }
+    
 }

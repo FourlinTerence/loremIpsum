@@ -23,13 +23,11 @@ class VideoController extends Controller
     }
     
     public function store(CreateVideoRequest $request)
-    {
-
-        $data = $request->validated();
+    {   $data = $request->validated();
 
         $user_id = $request->input('user_id');
         $user = User::find($user_id);
-
+        
         if (!$user) {
             return redirect()
                 ->back()
@@ -43,6 +41,17 @@ class VideoController extends Controller
             ->route('index')
             ->with('success', "La vidéo a bien été sauvegardée");
     }
+
+    public function destroy(Video $video)
+{
+   
+    $video->delete();
+
+    return redirect()->route('index')->with('success', 'La vidéo a bien été supprimée.');
+}
+    
+    
+   
     // public function store(CreateVideoRequest $request){
     //     $video = Video::create($request->validated());
     //     return redirect()
