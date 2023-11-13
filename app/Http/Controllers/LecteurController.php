@@ -55,12 +55,10 @@ class LecteurController extends Controller
     }
 
     
-    public function updatea(Video $video, CreateVideoRequest $request){
+    public function update(Video $video, CreateVideoRequest $request){
         
-        dd('toto');
         $data = $request->validated();
-        dd($data);
-        
+
         $video->update($data);
         
         return redirect()
