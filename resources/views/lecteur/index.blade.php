@@ -51,7 +51,7 @@
                                 <h1 class="modal-title fs-5" id="modificationModalLabel">Modification de la vidéo</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form method="POST" action="{{ route('lecteurUpdate') }}">
+                            <form method="POST" action="{{ route('videos.update') }}">
                                 @csrf
                                 <div class="modal-body">
 

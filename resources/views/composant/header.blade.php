@@ -3,10 +3,33 @@
         <div class="lienNav">
             <a href="{{ route('indexindex') }}"><img class="logo"
                     src="{{ asset('image/tv-media-logo-design.-video-cam-sign.-png_109082.jpg') }}" alt=""></a>
-            <p><a href="" class="lienNavStyle">Recherche</a>
-            </p>
-            <p><a href="recherche.php" class="lienNavStyle">Chaines</a>
-            </p>
+            <p><a href="" class="lienNavStyle">Recherche</a></p>
+            <p><a href="recherche.php" class="lienNavStyle">Chaines</a></p>
+            <div class="burger dropdown">
+                <button class="dropbtn"><img src="{{ asset('image/menuBurger.png') }}" alt=""></button>
+                <div class="dropdown-content">
+                    <a href="">Recherche</a>
+                    <a href="">Chaines</a>
+                    @switch(Auth::check())
+                        @case(true)
+                            <a>Espace personnel</a>
+                            <p>{{ Auth::user()->name }}</p>
+                            <form action="{{ route('auth.logout') }}" method="post">
+                                @method('delete')
+                                @csrf
+                                <button class="postVideo">Se déconnecter</button>
+                            </form>
+                            <button class="boutonRecherche postVideo" type="btn" data-bs-toggle="modal"
+                                data-bs-target="#modalUploadVideo">Soumettre une video</button>
+                        @break
+
+                        @default
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#inscription">Inscription</button>
+
+                            <a href="{{ route('auth.login') }}">Connexion</a>
+                    @endswitch
+                </div>
+            </div>
         </div>
 
         @switch(Auth::check())
@@ -40,7 +63,7 @@
                 <div class="connexionNav">
                     <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
                         data-bs-target="#inscription">Inscription</button>
-
+                    
                     <a href="{{ route('auth.login') }}" class="btn btn-primary btn-lg ms-2">Connexion</a>
                 </div>
         @endswitch
@@ -86,8 +109,8 @@
                         <div class="allInput">
                             <div class="labelImput">
                                 <label for="inscriptionage" class="form-label inputSize">Age</label>
-                                <input type="number" id="inscriptionAge" class="form-control" min="0" max="120" name="age"
-                                    value="{{ old('age') }}">
+                                <input type="number" id="inscriptionAge" class="form-control" min="0"
+                                    max="120" name="age" value="{{ old('age') }}">
                             </div>
                             @error('age')
                                 {{ $message }}
@@ -162,9 +185,9 @@
                                 {{ $message }}
                             @enderror
                         </div>
-  
+
                         <input type="hidden" value="1" name="role_id">
-                    
+
                     </div>
 
                     <div class="modal-footer">
@@ -222,7 +245,7 @@
                             <div class="labelImput">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea type="number" id="description" class="form-control inputSize" placeholder="Decrivez la vidéo"
-                                    name="description">{{old('description')}}</textarea>
+                                    name="description">{{ old('description') }}</textarea>
                             </div>
                             @error('description')
                                 {{ $message }}

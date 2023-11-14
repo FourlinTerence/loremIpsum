@@ -55,15 +55,26 @@ class LecteurController extends Controller
     }
 
     
-    public function update(Video $video, CreateVideoRequest $request){
+    // public function update(Video $video, CreateVideoRequest $request){
         
-        $data = $request->validated();
-
-        $video->update($data);
+    //     $data = $request->validated();
         
-        return redirect()
-        ->route('lecteur',['slug' => $video->slug])
-        ->with('success', "La vidéo a bien été modifié");
+    //     $video->update($data);
+        
+    //     return redirect()
+    //     ->route('lecteur',['slug' => $video->slug])
+    //     ->with('success', "La vidéo a bien été modifié");
+    // }
+    public function update(CreateVideoRequest $request):RedirectResponse | View
+    {    
+        dd($request);
+        $categories = Category::orderBy('name', 'asc')->get();
+        $videos = Video::orderBy('created_at', 'desc')->paginate(8);
+        
+        return view('accueil.index', [
+            'categories' => $categories,
+            'videos' => $videos
+        ]);
     }
     
 }

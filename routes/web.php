@@ -34,7 +34,7 @@ Route::prefix('/')->name('index')->controller(VideoController::class)->group(fun
 Route::get('/lecteur/{slug}', [LecteurController::class, 'index'])->where([
     'slug' => '[a-z0-9\-]+'
 ])->name('lecteur');
-Route::post('/lecteur/update', [LecteurController::class, 'update'])->name('lecteurUpdate');
+Route::post('/lecteur/update', [VideoController::class, 'update'])->name('videos.update');
 Route::delete('/videos/{video}', [VideoController::class, 'destroy'])->name('videos.destroy');
 
 Route::get('/recherchertemporaire', function () {
@@ -42,8 +42,6 @@ Route::get('/recherchertemporaire', function () {
 });
 
 Route::get('/chainetemporaire', function () {
-
-
     $categories = Category::all();
     return view('chaine.index', [
         'categories' => $categories
